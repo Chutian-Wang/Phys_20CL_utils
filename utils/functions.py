@@ -15,7 +15,7 @@ def setAx(axs):
         axs.minorticks_on()
         axs.tick_params(which='major', length=4, width=1, direction='in')
         axs.tick_params(which='minor', length=2, width=1, direction='in')
-            
+        
 def chisq(exp, obs, err, dof = 1):
     return (((exp-obs)/ err) ** 2).sum() / (obs.size - dof)
 

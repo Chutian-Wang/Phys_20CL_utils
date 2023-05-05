@@ -19,6 +19,8 @@ class CSVexplorer():
                         self.buffer[item] = []
                 else:
                     for col, item in enumerate(row):
+                        if item == "":
+                            continue
                         self.buffer[self.header[col]].append(item)
         
     def getHeader(self):
@@ -55,7 +57,10 @@ class CSVexplorer():
                 else:
                     self.buffer[_col] = T(self.buffer[_col])
         else:
-            self.buffer[col] = T(self.buffer[col])
+            if type(col) == int:
+                    self.buffer[self.header[col]] = T(self.buffer[self.header[col]])
+            else:
+                self.buffer[col] = T(self.buffer[col])
             
     def __getitem__(self, col):
         if type(col) == int:
